@@ -1,0 +1,12 @@
+[Unit]
+Description=Robust.Cdn
+
+[Service]
+Type=notify
+WorkingDirectory=/opt/Robust.Cdn
+ExecStart=/opt/Robust.Cdn/Robust.Cdn
+User=Robust.Cdn
+Group=Robust.Cdn
+
+[Install]
+WantedBy=multi-user.target

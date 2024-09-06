@@ -1,0 +1,168 @@
+server {
+    server_name impstation.gay;
+
+    # SS14.Changelog
+    location /hook {
+        proxy_pass http://localhost:45896/hook;
+    }
+
+    # SS14.Admin
+    location /admin/ {
+        proxy_pass          http://localhost:27689;
+        proxy_http_version  1.1;
+        proxy_set_header    Upgrade $http_upgrade;
+        proxy_set_header    Connection keep-alive;
+        proxy_set_header    Host $host;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    X-Forwarded-Proto https;
+        proxy_cache_bypass  $http_upgrade;
+
+        # Necessary to avoid errors from too large headers thanks to large cookies.
+        proxy_buffer_size        128k;
+        proxy_buffers            4 256k;
+        proxy_busy_buffers_size  256k;
+    }
+
+    # replay directory
+    location /replays {
+        root /opt/SS14.Watchdog/instances/impstation/data/www/;
+        autoindex on;
+        autoindex_exact_size off;
+        limit_rate 1M;
+    }
+
+    # for sending updates to Robust.Cdn
+    location /artifacts/ {
+        root /var/www/;
+    }
+
+    location / {
+        return 302 https://videopizza.biz/;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/impstation.gay/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/impstation.gay/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+# Game server status endpoint
+# note on how this works:
+# when you have it proxed with tls,
+# the launcher WILL connect with ss14s://
+# and will NOT connect with ss14:// to the same port,
+# and will NOT connect with no protocol specified
+# (it defaults to ss14://).
+# the wizdens are 1212 ss14s only
+# what makes sense when not using hub is to leave 1212 normal
+# and set another one like 1213 tls for freaks.
+# Don't forget to set status.connectaddress!
+server {
+    server_name impstation.gay;
+
+    location / {
+        proxy_pass http://localhost:1212;
+    }
+
+    listen 1312 ssl;
+    ssl_certificate /etc/letsencrypt/live/impstation.gay/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/impstation.gay/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}
+
+# Server status (staging)
+server {
+    server_name impstation.gay;
+
+    location / {
+        proxy_pass http://localhost:16135;
+    }
+
+    listen 16137 ssl;
+    ssl_certificate /etc/letsencrypt/live/impstation.gay/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/impstation.gay/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}
+
+# Robust.Cdn
+server {
+    server_name cdn.impstation.gay;
+
+    # gzip JSON responses.
+    gzip on;
+    gzip_types application/json;
+
+    location / {
+        # High body size to avoid buffering of download request bodies.
+        client_body_buffer_size 10M;
+        # Increased read timeout to avoid timeouts on the publish API endpoint.
+        proxy_read_timeout 120s;
+        # Boilerplate reverse proxy config.
+        proxy_set_header   Host $http_host;
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+        # Disable buffering of outgoing requests.
+        proxy_buffering    off;
+
+        # Update port here.
+        #proxy_pass         http://localhost:8080;
+        proxy_pass         http://localhost:27690;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/impstation.gay/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/impstation.gay/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+# Grafana
+server {
+    server_name grafana.impstation.gay;
+
+    location / {
+        proxy_set_header Host $host;
+        proxy_pass http://localhost:3000;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/impstation.gay/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/impstation.gay/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server {
+    if ($host = impstation.gay) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    server_name impstation.gay;
+    listen 80;
+    return 404; # managed by Certbot
+}
+
+server {
+    if ($host = cdn.impstation.gay) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    server_name cdn.impstation.gay;
+    listen 80;
+    return 404; # managed by Certbot
+}
+
+server {
+    if ($host = grafana.impstation.gay) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    server_name grafana.impstation.gay;
+    listen 80;
+    return 404; # managed by Certbot
+}

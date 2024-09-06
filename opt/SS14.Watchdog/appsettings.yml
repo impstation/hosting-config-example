@@ -1,0 +1,65 @@
+Serilog:
+  Using: [ "Serilog.Sinks.Console", "Serilog.Sinks.Loki" ]
+  MinimumLevel:
+    Default: Information
+    Override:
+      SS14: Debug
+      Microsoft: "Warning"
+      Microsoft.Hosting.Lifetime: "Information"
+      Microsoft.AspNetCore: Warning
+
+  WriteTo:
+    - Name: Console
+      Args:
+        OutputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3} {SourceContext}] {Message:lj}{NewLine}{Exception}"
+
+  #Enrich: [ "FromLogContext" ]
+
+  #Loki:
+  #  Address: "http://localhost:3100"
+  #  Name: "Test"
+
+# Important if using Git update method
+# BaseUrl: "http://localhost:16136/"
+# Urls: "http://localhost:16136"
+
+AllowedHosts: "*"
+
+Notification:
+  DiscordWebhook: "DATAEXPUNGED"
+
+Servers:
+  Instances:
+    # ID of your server.
+    impstation:
+      # Name of the server - Note that this is NOT the name of the server on the hub, that is set for each server under game.hostname in their respective config.toml files.
+      Name: "impstation"
+      ApiToken: "DATAEXPUNGED" # API token to control this instance remotely like run updates, restart server. This should be confidential
+      ApiPort: 1212 # API port OF THE GAME SERVER. This has to match the 1212 HTTP status API (described below). Otherwise the watchdog can't contact the game server for stuff.
+      # Auto update configuration. This can be left out if you do not need auto updates. Example is for our officially hosted builds.
+      # See below for alternatives.
+      UpdateType: "Manifest"
+      Updates:
+        ManifestUrl: "https://cdn.impstation.gay/fork/impstation/manifest"
+      # UpdateType: "Git"
+      # Updates:
+      #   BaseUrl: "https://github.com/medabunny/imp-station-14"
+      #   Branch: "master"
+      #   HybridACZ: true
+      EnvironmentVariables:
+        ROBUST_NUMERICS_AVX: "true"
+        DOTNET_TieredPGO: 1
+        DOTNET_TC_QuickJitForLoops: 1
+        DOTNET_ReadyToRun: 0
+    # impstation-staging:
+    #   Name: "impstation-staging"
+    #   ApiToken: "DATAEXPUNGED"
+    #   ApiPort: 16135
+    #   UpdateType: "Manifest"
+    #   Updates:
+    #     ManifestUrl: "http://cdn.impstation.gay/fork/impstation-staging/manifest"
+    #   EnvironmentVariables:
+    #     ROBUST_NUMERICS_AVX: "true"
+    #     DOTNET_TieredPGO: 1
+    #     DOTNET_TC_QuickJitForLoops: 1
+    #     DOTNET_ReadyToRun: 0

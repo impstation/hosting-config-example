@@ -1,0 +1,12 @@
+[Unit]
+Description=SS14.Admin
+
+[Service]
+Type=notify
+WorkingDirectory=/opt/SS14.Admin
+ExecStart=/opt/SS14.Admin/SS14.Admin
+User=SS14.Admin
+Group=SS14.Admin
+
+[Install]
+WantedBy=multi-user.target

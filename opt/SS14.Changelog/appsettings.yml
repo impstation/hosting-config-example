@@ -1,0 +1,44 @@
+Serilog:
+  Using: [ "Serilog.Sinks.Console", "Serilog.Sinks.Loki" ]
+  MinimumLevel:
+    Default: Information
+    Override:
+      SS14: Verbose
+      Microsoft: "Warning"
+      Microsoft.Hosting.Lifetime: "Information"
+      Microsoft.AspNetCore: Warning
+
+  WriteTo:
+    - Name: Console
+      Args:
+        OutputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3} {SourceContext}] {Message:lj}{NewLine}{Exception}"
+
+  Enrich: [ "FromLogContext" ]
+
+  # If you want Loki logging.
+  #Loki:
+  #  Address: "http://localhost:3101"
+  #  Name: "centcomm"
+
+# Change URL/port to bind to here.
+urls: "http://localhost:45896"
+
+Changelog:
+  # Secret configured in the github webhook, to ensure authenticity.
+  GitHubSecret: "DATAEXPUNGED"
+  # The branch to look at for generating changelogs.
+  ChangelogBranchName: "master"
+  # File in Resources/Changelog/ that will be updated.
+  ChangelogFilename: "Impstation.yml"
+  # ChangelogRepoRemote: "git@github.com:impstation/imp-station-14.git"
+  # CommitAuthorName: "ImpstationBot"
+  # CommitAuthorEmail: "joelsgp+bot@protonmail.com"
+  # The SSH Key to use to push/pull changes.
+  SshKey: '/opt/SS14.Changelog/ssh_key'
+  # The on-disk repo to keep up to date and to generate changelogs in.
+  # You need to initialize this manually with git clone.
+  ChangelogRepo: '/var/lib/changelog/repo/'
+  # How long to wait after a changelog-change has been merged/pushed before we generate changelogs and push a commit.
+  DelaySeconds: 60
+
+AllowedHosts: "*"

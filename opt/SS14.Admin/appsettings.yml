@@ -1,0 +1,50 @@
+Serilog:
+    Using: [ "Serilog.Sinks.Console" ]
+    MinimumLevel:
+        Default: Information
+        Override:
+            SS14: Debug
+            Microsoft: "Warning"
+            Microsoft.Hosting.Lifetime: "Information"
+            Microsoft.AspNetCore: Warning
+            IdentityServer4: Warning
+    WriteTo:
+        - Name: Console
+          Args:
+              OutputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3} {SourceContext}] {Message:lj}{NewLine}{Exception}"
+
+    Enrich: [ "FromLogContext" ]
+
+    #Loki:
+    #    Address: "http://localhost:3102"
+    #    Name: "centcomm"
+
+ConnectionStrings:
+    # Connect this to the same PostgreSQL database as your SS14 server
+    # TODO separate user account for admin panel ops?
+    # DefaultConnection: "Server=127.0.0.1;Port=5432;Database=ss14;User Id=ss14-admin;Password=foobar"
+    DefaultConnection: "Server=127.0.0.1;Port=5432;Database=impstation;User Id=ss14_admin;Password=DATAEXPUNGED"
+
+# Set this to your domain name
+AllowedHosts: "impstation.gay"
+
+# If you like to change the port of the webserver change it here, I recommend you reverse proxy this for SSL
+urls: "http://localhost:27689/"
+
+# Endpoint for the webpanel, this should be fine
+PathBase: "/admin"
+
+# Make sure this points to the wwwroot, it should be in the same directory as the executable
+WebRootPath: "/opt/SS14.Admin/wwwroot"
+
+# Add your proxy here
+ForwardProxies:
+    - 127.0.0.1
+
+# Your way of authenticating accounts, the docs will set it up with an ss14 account 
+Auth:
+    Authority: "https://account.spacestation14.com/"
+    ClientId: "634b7796-8c86-4c8b-bbd5-f1ae7267892d"
+    ClientSecret: "DATAEXPUNGED"
+
+authServer: "https://auth.spacestation14.com"

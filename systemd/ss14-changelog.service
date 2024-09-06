@@ -1,0 +1,12 @@
+[Unit]
+Description=SS14.Changelog
+
+[Service]
+Type=notify
+WorkingDirectory=/opt/SS14.Changelog
+ExecStart=/opt/SS14.Changelog/SS14.Changelog
+User=SS14.Changelog
+Group=SS14.Changelog
+
+[Install]
+WantedBy=multi-user.target

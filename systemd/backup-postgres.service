@@ -1,0 +1,7 @@
+[Unit]
+Description=Run pg_dump
+Wants=postgresql.service
+
+[Service]
+Type=oneshot
+ExecStart=/root/backup-postgres.sh
