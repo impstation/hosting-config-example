@@ -10,10 +10,11 @@ This was written to keep the VPS organised and documented which is where you'll 
 The ssh keys for meda, ghoul, and I (imcb) are in `.ssh/authorized keys` to allow us to connect.
 
 The root directory has the following scripts:
-- `backup-config.sh` - Copy appsettings.yml et cetera from various services into `/etc/ss14` to be staged by etckeeper
+- `backup-config.sh` - (OLD - I realised you can just use symlinks) Copy appsettings.yml et cetera from various services into `/etc/ss14` to be staged by etckeeper
 - `backup-postgres.sh` - Use pg_dump to export data excluding logs into `backup/postgres`. Called by a systemd timer
 - `backup-sqlite.sh` - Old script to use sqlite3 to copy data into `backup/server`
 - `cdn-update.sh` - Build the game in `src/` and send it to Robust.Cdn with curl. Local alternative to "publish" GitHub action
+- `make-config-symlinks.sh` - Run once to link files in `/etc/ss14` to everywhere needed in `/opt` to allow easily versioning them with etckeeper. You need to create the files in `/etc/ss14` first.
 - `vacuum-replays.sh` - Delete files older than a certain age from the replays server
 - `watchdog-update` - Send an update ping instruction to the watchdog with curl
 
@@ -32,6 +33,7 @@ rsync allows us to see which files have changed.
 The following custom systemd units are automatically running software. They are placed in `/etc/systemd/system` and versioned with etckeeper.
 - `backup-postgres.timer`, `backup-postgres.service` - Periodically run `/root/backup-postgres.sh`
 - `vacuum-replays.timer`, `vacuum-replays.service` - Periodically run `/root/vacuum-replays.sh`
+- `byobu-watchdog.service` - Starts a tmux session and runs the watchdog in it as soon as the server boots up. Allows us to do fully unattended upgrades but still access the server console.
 - `loki.service` - Runs log aggregator for grafana
 - `prometheus.service` - Runs data collector for grafana
 - `grafana.service` - Grafana stats server at <https://grafana.impstation.gay>

@@ -3,7 +3,8 @@ Description=Run pg_dump
 
 [Timer]
 Unit=backup-postgres.service
-OnCalendar=*-*-* 07:00
+; OnCalendar=*-*-* 07:00
+OnActiveSec=24h
 
 [Install]
 WantedBy=multi-user.target

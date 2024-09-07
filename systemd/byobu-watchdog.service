@@ -1,0 +1,14 @@
+[Unit]
+Description=Start SS14.Watchdog in a tmux session
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/opt/SS14.Watchdog
+ExecStart=/usr/bin/byobu new-session -s 'watchdog' -d -c '/opt/SS14.Watchdog' '/opt/SS14.Watchdog/SS14.Watchdog'
+ExecStop=/usr/bin/byobu kill-session -t 'watchdog'
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target

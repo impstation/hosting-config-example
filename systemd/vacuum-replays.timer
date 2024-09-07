@@ -3,7 +3,8 @@ Description=Remove old server replays
 
 [Timer]
 Unit=vacuum-replays.service
-OnCalendar=*-*-* 07:00
+; OnCalendar=*-*-* 07:00
+OnActiveSec=24h
 
 [Install]
 WantedBy=multi-user.target
