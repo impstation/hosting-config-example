@@ -20,5 +20,5 @@ ln -s -f "$etc/$watchdog/appsettings.yml" "$opt/$watchdog"
 server='impstation'
 ln -s -f "$etc/$server/config.toml" "$opt/$watchdog/instances/$server" 
 
-# server_staging='impstation-staging'
-# ln -s -f "$etc/$server_staging/config.toml" "$opt/$watchdog/instances/$server_staging"
+server_staging='impstation-staging'
+ln -s -f "$etc/$server_staging/config.toml" "$opt/$watchdog/instances/$server_staging"

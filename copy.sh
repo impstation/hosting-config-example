@@ -2,8 +2,12 @@
 
 set -eux
 
-rsync --archive --recursive /etc/ss14/ opt/
-mv opt/README.md .
+cp /root/README.md .
+
+rsync --archive --recursive /etc/ss14/ ss14
+
+mkdir -p scripts
+cp -t scripts /root/scripts/*.sh
 
 mkdir -p nginx
 cp -t nginx /etc/nginx/sites-available/ss14
