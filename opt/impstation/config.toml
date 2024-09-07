@@ -128,12 +128,12 @@ pg_host = "localhost"
 pg_port = 5432
 pg_database = "impstation"
 pg_username = "impstation"
-pg_password = "DATAEXPUNGED"
+pg_password = "REDACTED7"
 
 [discord]
-ahelp_webhook = "DATAEXPUNGED"
-vote_webhook = "DATAEXPUNGED"
-round_update_webhook = "DATAEXPUNGED"
+ahelp_webhook = "REDACTED12"
+vote_webhook = "REDACTED13"
+round_update_webhook = "REDACTED14"
 round_end_role = "1260186538680258580"
 
 [infolinks]

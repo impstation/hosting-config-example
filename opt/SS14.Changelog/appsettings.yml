@@ -25,7 +25,7 @@ urls: "http://localhost:45896"
 
 Changelog:
   # Secret configured in the github webhook, to ensure authenticity.
-  GitHubSecret: "DATAEXPUNGED"
+  GitHubSecret: "REDACTED4"
   # The branch to look at for generating changelogs.
   ChangelogBranchName: "master"
   # File in Resources/Changelog/ that will be updated.

@@ -25,7 +25,7 @@ Serilog:
 AllowedHosts: "*"
 
 Notification:
-  DiscordWebhook: "DATAEXPUNGED"
+  DiscordWebhook: "REDACTED15"
 
 Servers:
   Instances:
@@ -33,7 +33,7 @@ Servers:
     impstation:
       # Name of the server - Note that this is NOT the name of the server on the hub, that is set for each server under game.hostname in their respective config.toml files.
       Name: "impstation"
-      ApiToken: "DATAEXPUNGED" # API token to control this instance remotely like run updates, restart server. This should be confidential
+      ApiToken: "REDACTED0" # API token to control this instance remotely like run updates, restart server. This should be confidential
       ApiPort: 1212 # API port OF THE GAME SERVER. This has to match the 1212 HTTP status API (described below). Otherwise the watchdog can't contact the game server for stuff.
       # Auto update configuration. This can be left out if you do not need auto updates. Example is for our officially hosted builds.
       # See below for alternatives.
@@ -52,7 +52,7 @@ Servers:
         DOTNET_ReadyToRun: 0
     # impstation-staging:
     #   Name: "impstation-staging"
-    #   ApiToken: "DATAEXPUNGED"
+    #   ApiToken: "REDACTED2"
     #   ApiPort: 16135
     #   UpdateType: "Manifest"
     #   Updates:

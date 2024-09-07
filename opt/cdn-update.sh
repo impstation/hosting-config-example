@@ -7,7 +7,7 @@ set -eux
 
 ROBUST_CDN_URL='https://cdn.impstation.gay'
 FORK_ID='impstation'
-PUBLISH_TOKEN='DATAEXPUNGED'
+PUBLISH_TOKEN='REDACTED1'
 ARTIFACT_URL='https://impstation.gay/artifacts/artifacts.zip'
 
 REPO_PATH="$HOME/src/imp-station-14"

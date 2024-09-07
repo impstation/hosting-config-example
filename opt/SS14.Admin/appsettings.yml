@@ -22,7 +22,7 @@ Serilog:
 ConnectionStrings:
     # Connect this to the same PostgreSQL database as your SS14 server
     # DefaultConnection: "Server=127.0.0.1;Port=5432;Database=ss14;User Id=ss14-admin;Password=foobar"
-    DefaultConnection: "Server=127.0.0.1;Port=5432;Database=impstation;User Id=ss14_admin;Password=DATAEXPUNGED"
+    DefaultConnection: "Server=127.0.0.1;Port=5432;Database=impstation;User Id=ss14_admin;Password=REDACTED10"
 
 # Set this to your domain name
 AllowedHosts: "impstation.gay"
@@ -44,6 +44,6 @@ ForwardProxies:
 Auth:
     Authority: "https://account.spacestation14.com/"
     ClientId: "634b7796-8c86-4c8b-bbd5-f1ae7267892d"
-    ClientSecret: "DATAEXPUNGED"
+    ClientSecret: "REDACTED5"
 
 authServer: "https://auth.spacestation14.com"
