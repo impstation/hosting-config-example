@@ -15,13 +15,12 @@ Serilog:
 
     Enrich: [ "FromLogContext" ]
 
-    #Loki:
-    #    Address: "http://localhost:3102"
-    #    Name: "centcomm"
+    Loki:
+       Address: "http://localhost:3100"
+       Name: "centcomm"
 
 ConnectionStrings:
     # Connect this to the same PostgreSQL database as your SS14 server
-    # TODO separate user account for admin panel ops?
     # DefaultConnection: "Server=127.0.0.1;Port=5432;Database=ss14;User Id=ss14-admin;Password=foobar"
     DefaultConnection: "Server=127.0.0.1;Port=5432;Database=impstation;User Id=ss14_admin;Password=DATAEXPUNGED"
 

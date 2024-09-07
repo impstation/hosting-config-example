@@ -15,10 +15,10 @@ Serilog:
 
   Enrich: [ "FromLogContext" ]
 
-  # If you want Loki logging.
-  #Loki:
-  #  Address: "http://localhost:3101"
-  #  Name: "centcomm"
+  If you want Loki logging.
+  Loki:
+   Address: "http://localhost:3100"
+   Name: "centcomm"
 
 # Change URL/port to bind to here.
 urls: "http://localhost:45896"

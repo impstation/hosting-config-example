@@ -42,6 +42,11 @@ desc = "Unofficial server for fans of RTVS featuring custom content. Come and se
 # default 150
 lobbyduration = 300
 
+[chat]
+# Message Of The Day
+# motd = "hello chat"
+motd = "Be advised, Station AI latejoins are currently broken."
+
 [ic]
 flavor_text = true
 

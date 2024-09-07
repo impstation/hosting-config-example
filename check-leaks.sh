@@ -4,6 +4,6 @@ set -eux
 
 source passwords.sh
 for p in ${PASSWORDS[@]}; do
-    grep -r "$p"
-    # grep -rl "$p" | xargs sed -i "s/$p/DATAEXPUNGED/g"
+    grep --exclude='passwords.sh' -r "$p" || true
+    # grep --exclude='passwords.sh' -rl "$p" | xargs -r sed -i "s|$p|DATAEXPUNGED|g"
 done

@@ -1,43 +1,46 @@
 #!/usr/bin/env bash
 set -eux
 
-# run this then do:
+# opt this then do:
 # etckeeper commit "whatever"
 # to back up all configs
 
-dest='/etc/ss14'
-run='/opt'
+etc='/etc/ss14'
+opt='/opt'
 
-cp -t "$dest" \
+cp -t "$etc" \
     "$HOME/README.md" \
     "$HOME/backup-config.sh" \
     "$HOME/backup-postgres.sh" \
     "$HOME/backup-sqlite.sh" \
     "$HOME/cdn-update.sh" \
+    "$HOME/make-config-symlinks.sh" \
     "$HOME/vacuum-replays.sh" \
     "$HOME/watchdog-update.sh"
 
-cdn='Robust.Cdn'
-mkdir -p "$dest/$cdn"
-cp "$run/$cdn/appsettings.json" "$dest/$cdn"
-cp "$run/$cdn/appsettings.Development.json" "$dest/$cdn"
+# all replaced with symlinks method!
 
-admin='SS14.Admin'
-mkdir -p "$dest/$admin"
-cp "$run/$admin/appsettings.yml" "$dest/$admin"
+# cdn='Robust.Cdn'
+# mkdir -p "$etc/$cdn"
+# cp "$opt/$cdn/appsettings.json" "$etc/$cdn"
+# cp "$opt/$cdn/appsettings.Development.json" "$etc/$cdn"
 
-changelog='SS14.Changelog'
-mkdir -p "$dest/$changelog"
-cp "$run/$changelog/appsettings.yml" "$dest/$changelog"
+# admin='SS14.Admin'
+# mkdir -p "$etc/$admin"
+# cp "$opt/$admin/appsettings.yml" "$etc/$admin"
 
-watchdog='SS14.Watchdog'
-mkdir -p "$dest/$watchdog"
-cp "$run/$watchdog/appsettings.yml" "$dest/$watchdog"
+# changelog='SS14.Changelog'
+# mkdir -p "$etc/$changelog"
+# cp "$opt/$changelog/appsettings.yml" "$etc/$changelog"
 
-server='impstation'
-mkdir -p "$dest/$server"
-cp "$run/$watchdog/instances/$server/config.toml" "$dest/$server"
+# watchdog='SS14.Watchdog'
+# mkdir -p "$etc/$watchdog"
+# cp "$opt/$watchdog/appsettings.yml" "$etc/$watchdog"
 
-server_staging='impstation-staging'
-mkdir -p "$dest/$server_staging"
-# cp "$run/$watchdog/instances/$server_staging/config.toml" "$dest/$server_staging"
+# server='impstation'
+# mkdir -p "$etc/$server"
+# cp "$opt/$watchdog/instances/$server/config.toml" "$etc/$server"
+
+# server_staging='impstation-staging'
+# mkdir -p "$etc/$server_staging"
+# cp "$opt/$watchdog/instances/$server_staging/config.toml" "$etc/$server_staging"

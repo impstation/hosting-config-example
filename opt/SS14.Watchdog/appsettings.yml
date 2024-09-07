@@ -15,13 +15,12 @@ Serilog:
 
   #Enrich: [ "FromLogContext" ]
 
-  #Loki:
-  #  Address: "http://localhost:3100"
-  #  Name: "Test"
+  Loki:
+   Address: "http://localhost:3100"
+   Name: "centcomm"
 
 # Important if using Git update method
-# BaseUrl: "http://localhost:16136/"
-# Urls: "http://localhost:16136"
+# BaseUrl: "http://localhost:5000/"
 
 AllowedHosts: "*"
 
@@ -58,8 +57,3 @@ Servers:
     #   UpdateType: "Manifest"
     #   Updates:
     #     ManifestUrl: "http://cdn.impstation.gay/fork/impstation-staging/manifest"
-    #   EnvironmentVariables:
-    #     ROBUST_NUMERICS_AVX: "true"
-    #     DOTNET_TieredPGO: 1
-    #     DOTNET_TC_QuickJitForLoops: 1
-    #     DOTNET_ReadyToRun: 0
