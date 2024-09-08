@@ -3,4 +3,4 @@ Description=Remove old server replays
 
 [Service]
 Type=oneshot
-ExecStart=/root/vacuum-replays.sh
+ExecStart=/root/scripts/vacuum-replays.sh

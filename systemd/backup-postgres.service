@@ -4,4 +4,4 @@ Wants=postgresql.service
 
 [Service]
 Type=oneshot
-ExecStart=/root/backup-postgres.sh
+ExecStart=/root/scripts/backup-postgres.sh

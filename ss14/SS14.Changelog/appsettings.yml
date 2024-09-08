@@ -15,7 +15,7 @@ Serilog:
 
   Enrich: [ "FromLogContext" ]
 
-  If you want Loki logging.
+  # If you want Loki logging.
   Loki:
    Address: "http://localhost:3100"
    Name: "centcomm"
