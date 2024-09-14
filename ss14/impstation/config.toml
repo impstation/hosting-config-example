@@ -45,7 +45,9 @@ lobbyduration = 300
 [chat]
 # Message Of The Day
 # motd = "hello chat"
-motd = "Be advised, Station AI latejoins are currently broken."
+# motd = "Be advised, Station AI latejoins are currently broken."
+# motd = "we're getting a lot of patches submitted so we need people to help review them! comment and you can vote with thumps up/ thumbsdown here! and keep submitting stuff! https://github.com/impstation/imp-station-14/pulls"
+motd = "Spilling your juice is not an emergency and does not warrant the use of ahelp."
 
 [ic]
 flavor_text = true
@@ -131,15 +133,22 @@ pg_username = "impstation"
 pg_password = "REDACTED7"
 
 [discord]
+# testing server
 ahelp_webhook = "REDACTED12"
-vote_webhook = "REDACTED13"
-round_update_webhook = "REDACTED14"
-round_end_role = "1260186538680258580"
+# vote_webhook = "REDACTED13"
+# round_update_webhook = "REDACTED14"
+# round_end_role = "1260186538680258580"
+# hellzone
+vote_webhook = "REDACTED16"
+round_update_webhook = "REDACTED16"
+round_end_role = "1283176897219661856"
 
 [infolinks]
 discord = "https://discord.gg/mirakurutaimu"
 github = "https://github.com/medabunny/imp-station-14"
 website = "https://impstation.gay"
+# wiki = ""
+bug_report = "https://github.com/impstation/imp-station-14/issues"
 
 # Prometheus for Grafana
 [metrics]
@@ -159,8 +168,12 @@ auto_record = true
 # kilobytes
 # default
 # max_compressed_size = 524288
+max_compressed_size = 1048576
 # directory = "replays"
-# these will be relative to the data directory,
+# this will be relative to the data directory,
 # even if you have a leading slash.
 directory = "www/replays"
+# this will be relative to replay.directory
+# if it has a leading slash it will be relative
+# to the data directory
 auto_record_temp_dir = "/tmp/replays"
