@@ -35,7 +35,7 @@ enabled = true
 connectaddress = "udp://impstation.gay:1212"
 
 [game]
-hostname = "[EN] Imp Station [MRP]"
+hostname = "[EN][MRP] Impstation"
 soft_max_players = 80
 desc = "Unofficial server for fans of RTVS featuring custom content. Come and see him."
 # seconds
@@ -47,7 +47,7 @@ lobbyduration = 300
 # motd = "hello chat"
 # motd = "Be advised, Station AI latejoins are currently broken."
 # motd = "we're getting a lot of patches submitted so we need people to help review them! comment and you can vote with thumps up/ thumbsdown here! and keep submitting stuff! https://github.com/impstation/imp-station-14/pulls"
-motd = "Spilling your juice is not an emergency and does not warrant the use of ahelp."
+# motd = "Spilling your juice is not an emergency and does not warrant the use of ahelp."
 
 [ic]
 flavor_text = true

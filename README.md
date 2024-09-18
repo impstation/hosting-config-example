@@ -44,6 +44,8 @@ The following custom systemd units are automatically running software. They are 
 
 We also need the stock units `nginx.service` and `postgresql.service` for the web proxying and the Postgres server which is servicing the game server, the Red bot, and grafana.
 
+NOTE: doing an `apt update` with a new dotnet runtime will cause needrestart to try to automatically restart stuff. You can put `byobu-watchdog` in the blocklist in needrestart config to prevent hiccups
+
 ## Nginx config
 Nginx is the web server running our proxies and stuff. The setup is all in `/etc/nginx/sites-available/ss14` and should be commented and self explanatory.
 
