@@ -47,7 +47,7 @@ We also need the stock units `nginx.service` and `postgresql.service` for the we
 NOTE: doing an `apt update` with a new dotnet runtime will cause needrestart to try to automatically restart stuff. You can put `byobu-watchdog` in the blocklist in needrestart config to prevent hiccups
 
 ## Nginx config
-Nginx is the web server running our proxies and stuff. The setup is all in `/etc/nginx/sites-available/ss14` and should be commented and self explanatory.
+Nginx is the web server running our proxies and stuff. The setup is all in `/etc/nginx/sites-available/ss14` and should be commented and somewhat self explanatory. You will need the docs, links at the end.
 
 TLS stuff was set up with `certbot --nginx -d impstation.gay -d cdn.impstation.gay -d grafana.impstation.gay` and then copying some bits around to config sections it missed.
 
@@ -72,9 +72,16 @@ We have the following tokens to think about:
     - Red bot's password is in its config somewhere
 
 ## Relevant docs
+### SS14 wiki
 - <https://docs.spacestation14.com/en/general-development/setup/server-hosting-tutorial.html>
 - <https://docs.spacestation14.com/en/server-hosting/server-replay-recording.html>
 - <https://docs.spacestation14.com/en/server-hosting/setting-up-robust-cdn.html>
 - <https://docs.spacestation14.com/en/server-hosting/setting-up-ss14-admin.html>
 - <https://docs.spacestation14.com/en/server-hosting/setting-up-ss14-watchdog.html>
 - <https://docs.spacestation14.com/en/server-hosting/setting-up-redbot.html>
+### Red bot
+- <https://docs.discord.red/en/stable/install_guides/ubuntu-2404.html>
+### Nginx
+- <https://nginx.org/en/docs/>
+### Grafana
+- <https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/>

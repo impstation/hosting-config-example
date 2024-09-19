@@ -2,6 +2,10 @@
 
 set -eux
 
+# IMPORTANT don't use!
+# TODO this needs to be updated to the new publish script
+# https://github.com/impstation/imp-station-14/blob/master/Tools/publish_multi_request.py
+
 # https://github.com/impstation/imp-station-14/actions/workflows/publish.yml
 # https://github.com/impstation/imp-station-14/blob/master/.github/workflows/publish.yml
 
