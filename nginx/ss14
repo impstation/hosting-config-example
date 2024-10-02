@@ -97,7 +97,7 @@ server {
 
     location / {
         # Increased max body size for multi-request publishes. Not necessary for oneshot publishes.
-        client_max_body_size 512m;
+        client_max_body_size 1024m;
 
         # Do not buffer request bodies inside nginx, especially important for multi-request publishes.
         proxy_request_buffering off;
