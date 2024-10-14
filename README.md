@@ -2,7 +2,7 @@
 
 If you're reading this on the config examples repo: hello, the upstream hosting docs are a bit shit right now so hopefully this helps. examples are king.
 
-This was written to keep the VPS organised and documented which is where you'll be reading this otherwise
+This was written to keep the VPS organised and documented which is where you'll be reading this otherwise. If so hi and check out `~/.bash_history` and `~/.local/share/fish/fish_history` if any steps are unclear and that might help
 
 ## Root directory
 `/root` is the home directory for the root directory.
@@ -65,6 +65,7 @@ We have the following tokens to think about:
 - The CDN's isntance tokens should match in its `UpdateToken` and in GitHub Actions' `PUBLISH_TOKEN` as well as in `cdn-update.sh`.
 - The changelog bot's token should match in its `GitHubSecret` and in the GitHub webhook settings
 - The admin panel's `Auth.ClientSecret` should match centcomm's dev settings one
+    - <https://account.spacestation14.com/Identity/Account/Manage/Developer>
 - Discord webhooks should be in the game's `discord.*_webhook` as well as the watchdog's `Notification.DiscordWebhook`
 - Postgres passwords
     - The server database password should match in the server's `database.pg_password` and in SS14.Admin's `DefaultConnection`
@@ -78,6 +79,7 @@ We have the following tokens to think about:
 - <https://docs.spacestation14.com/en/server-hosting/setting-up-robust-cdn.html>
 - <https://docs.spacestation14.com/en/server-hosting/setting-up-ss14-admin.html>
 - <https://docs.spacestation14.com/en/server-hosting/setting-up-ss14-watchdog.html>
+- <https://docs.spacestation14.com/en/server-hosting/oauth.html>
 - <https://docs.spacestation14.com/en/server-hosting/setting-up-redbot.html>
 ### Red bot
 - <https://docs.discord.red/en/stable/install_guides/ubuntu-2404.html>
@@ -85,3 +87,7 @@ We have the following tokens to think about:
 - <https://nginx.org/en/docs/>
 ### Grafana
 - <https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/>
+- <https://grafana.com/tutorials/run-grafana-behind-a-proxy/>
+- <https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/>
+- <https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/github/>
+- <https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/generic-oauth/>

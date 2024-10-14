@@ -134,14 +134,22 @@ pg_password = "REDACTED7"
 
 [discord]
 # testing server
-ahelp_webhook = "REDACTED12"
+# ahelp_webhook = "REDACTED12"
 # vote_webhook = "REDACTED13"
 # round_update_webhook = "REDACTED14"
 # round_end_role = "1260186538680258580"
+# personal testing server
+ahelp_webhook = "REDACTED17"
 # hellzone
 vote_webhook = "REDACTED16"
 round_update_webhook = "REDACTED16"
 round_end_role = "1283176897219661856"
+
+[interaction]
+# defaults
+# rate_limit_count = 5
+# rate_limit_period = 0.5
+# rate_limit_announce_admins_delay = 120
 
 [infolinks]
 discord = "https://discord.gg/mirakurutaimu"
