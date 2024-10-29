@@ -153,7 +153,7 @@ round_end_role = "1283176897219661856"
 
 [infolinks]
 discord = "https://discord.gg/mirakurutaimu"
-github = "https://github.com/medabunny/imp-station-14"
+github = "https://github.com/impstation/imp-station-14"
 website = "https://impstation.gay"
 # wiki = ""
 bug_report = "https://github.com/impstation/imp-station-14/issues"
@@ -173,15 +173,26 @@ name = "impstation"
 
 [replay]
 auto_record = true
-# kilobytes
-# default
+# the way these work is weird - the zip isn't really compressed
+# but each individual .dat file inside it is, and in a weird format.
+# you can tell the compression ratio based on the limit
+# for each uncompressed .dat in replay.replay_tick_batchSize,
+# which defaults to 1MB. the compression is about 5x
+# so when the zips cap out at ~200MB you can tell they're hitting
+# the default uncompressed limit of 1GB.
+# meanwhile the compressed limit of 500MB isn't ever a problem.
+# unit is kilobytes
+# default 500MB
 # max_compressed_size = 524288
-max_compressed_size = 1048576
-# directory = "replays"
+# default 1GB
+# max_uncompressed_size = 1048576
+# #2GB
+max_uncompressed_size = 2097152
 # this will be relative to the data directory,
 # even if you have a leading slash.
+# directory = "replays"
 directory = "www/replays"
 # this will be relative to replay.directory
-# if it has a leading slash it will be relative
+# but if it has a leading slash it will be relative
 # to the data directory
 auto_record_temp_dir = "/tmp/replays"
