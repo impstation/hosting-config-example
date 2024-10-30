@@ -51,6 +51,7 @@ lobbyduration = 300
 
 [ic]
 flavor_text = true
+restricted_names = false # allows for use of nonalphanumeric characters in names. immediately going off if people get stupid with it.
 
 [console]
 # If this is true, people connecting from this machine (loopback)
@@ -150,6 +151,7 @@ round_end_role = "1283176897219661856"
 # rate_limit_count = 5
 # rate_limit_period = 0.5
 # rate_limit_announce_admins_delay = 120
+rate_limit_count = 20
 
 [infolinks]
 discord = "https://discord.gg/mirakurutaimu"
@@ -196,3 +198,6 @@ directory = "www/replays"
 # but if it has a leading slash it will be relative
 # to the data directory
 auto_record_temp_dir = "/tmp/replays"
+
+[shuttle]
+emergency_early_launch_allowed = true # allows for early shuttle launch with approval of 3 heads
