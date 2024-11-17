@@ -25,7 +25,7 @@ Serilog:
 AllowedHosts: "*"
 
 # Notification:
-#   DiscordWebhook: "REDACTED17"
+#   DiscordWebhook: "REDACTED18"
 
 Servers:
   Instances:

@@ -43,7 +43,8 @@ server {
     }
 
     location / {
-        return 302 https://videopizza.biz/;
+        # return 302 https://videopizza.biz/;
+        return 302 https://grindr.com/;
     }
 
     listen 443 ssl; # managed by Certbot
