@@ -72,6 +72,13 @@ We have the following tokens to think about:
     - The Grafana database is in `database.password`
     - Red bot's password is in its config somewhere
 
+## Large disk space users
+- client builds at `/var/robust-cdn/builds/`
+- server replays at `/opt/SS14.Watchdog/instances/impstation/data/www/replays`
+- database at `/var/lib/postgresql/16/main/`
+
+you can view these with `du --human-readable --summarize /var/robust-cdn/builds/ /opt/SS14.Watchdog/instances/impstation/data/ /var/lib/postgresql/16/main/`
+
 ## Relevant docs
 ### SS14 wiki
 - <https://docs.spacestation14.com/en/general-development/setup/server-hosting-tutorial.html>
