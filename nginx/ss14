@@ -42,6 +42,15 @@ server {
         root /var/www/;
     }
 
+    location /banappeal {
+        return 302 https://docs.google.com/forms/d/e/1FAIpQLSeDo1_12q_LyVWM4QALNxhBH7fl9lSZetcbZ0i7XRIceusuKw/viewform;
+    }
+
+    location /privacypolicy {
+        default_type text/plain;
+        return 200 'WE OWN YOU!!!!';
+    }
+
     location / {
         # return 302 https://videopizza.biz/;
         return 302 https://grindr.com/;

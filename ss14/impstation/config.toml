@@ -1,6 +1,7 @@
-# Welcome to the example configuration file!
-# Remember that if this is in bin/Content.Server or such, it may be overwritten on build.
-# Consider copying it and using the --config-file and --data-dir options.
+# important note:
+# most public stuff like server hostname, infolinks, motd etc. is set in:
+# https://github.com/impstation/imp-station-14/blob/master/Resources/ConfigPresets/Impstation/impstation.toml
+# see config.presets
 
 [log]
 # defaults
@@ -23,7 +24,7 @@ max_connections = 256
 [status]
 # The status server is the TCP side, used by the launcher to determine engine version, etc.
 # To be clear: Disabling it makes the launcher unable to connect!
-enabled = true
+# enabled = true
 
 # This is the address and port the status server binds to.
 # The port is by default set based on net.port so it will follow what you set there.
@@ -34,31 +35,15 @@ enabled = true
 #  by default the launcher will assume the address and port match that of the status server.
 connectaddress = "udp://impstation.gay:1212"
 
-[game]
-hostname = "[EN][MRP] Impstation"
-soft_max_players = 80
-desc = "Unofficial server for fans of RTVS featuring custom content. Come and see him."
-# seconds
-# default 150
-lobbyduration = 300
-
-[chat]
-# Message Of The Day
-# motd = "hello chat"
-# motd = "Be advised, Station AI latejoins are currently broken."
-# motd = "we're getting a lot of patches submitted so we need people to help review them! comment and you can vote with thumps up/ thumbsdown here! and keep submitting stuff! https://github.com/impstation/imp-station-14/pulls"
-# motd = "Spilling your juice is not an emergency and does not warrant the use of ahelp."
-motd = "Be sure to fill out the Impstation rules survey, found in the impstation #status channel in the Discord server! Your feedback is appreciated!!"
-
-[ic]
-flavor_text = true
-restricted_names = false # allows for use of nonalphanumeric characters in names. immediately going off if people get stupid with it.
+privacy_policy_link = "http://impstation.gay/privacypolicy"
+privacy_policy_identifier = "impstation"
+privacy_policy_version = "0.0.1"
 
 [console]
 # If this is true, people connecting from this machine (loopback)
 # will automatically be elevated to full admin privileges.
 # This literally works by checking if address == 127.0.0.1 || address == ::1
-loginlocal = true
+# loginlocal = true
 # login_host_user = ""
 
 [hub]
@@ -135,32 +120,11 @@ pg_username = "impstation"
 pg_password = "REDACTED7"
 
 [discord]
-# testing server
-# ahelp_webhook = "REDACTED12"
-# vote_webhook = "REDACTED13"
-# round_update_webhook = "REDACTED14"
-# round_end_role = "1260186538680258580"
-# personal testing server
-# ahelp_webhook = "REDACTED18"
 # hellzone
 ahelp_webhook = "REDACTED16"
 vote_webhook = "REDACTED17"
 round_update_webhook = "REDACTED17"
 round_end_role = "1283176897219661856"
-
-[interaction]
-# defaults
-# rate_limit_count = 5
-# rate_limit_period = 0.5
-# rate_limit_announce_admins_delay = 120
-rate_limit_count = 20
-
-[infolinks]
-discord = "https://discord.gg/mirakurutaimu"
-github = "https://github.com/impstation/imp-station-14"
-website = "https://impstation.gay"
-# wiki = ""
-bug_report = "https://github.com/impstation/imp-station-14/issues"
 
 # Prometheus for Grafana
 [metrics]
@@ -201,11 +165,16 @@ directory = "www/replays"
 # to the data directory
 auto_record_temp_dir = "/tmp/replays"
 
-[shuttle]
-emergency_early_launch_allowed = true # allows for early shuttle launch with approval of 3 heads
+[config]
+presets = "Impstation/impstation"
 
-[ghost]
-role_time = 10 # sets time before ghost role buttons enable, so people hopefully Actually Read
+[looc]
+# people abused the privilege, so off it goes
+enabled_dead = false
 
 [server]
-uptime_restart_minutes = 240
+id = "impstation"
+
+[tips]
+# this doesn't actually propagate to the client
+login_dataset = "LoginTips"
