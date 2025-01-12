@@ -37,7 +37,7 @@ connectaddress = "udp://impstation.gay:1212"
 
 privacy_policy_link = "http://impstation.gay/privacypolicy"
 privacy_policy_identifier = "impstation"
-privacy_policy_version = "0.0.1"
+privacy_policy_version = "2024-12-20"
 
 [console]
 # If this is true, people connecting from this machine (loopback)
@@ -121,10 +121,15 @@ pg_password = "REDACTED7"
 
 [discord]
 # hellzone
-ahelp_webhook = "REDACTED16"
-vote_webhook = "REDACTED17"
-round_update_webhook = "REDACTED17"
-round_end_role = "1283176897219661856"
+# ahelp_webhook = "REDACTED16"
+# vote_webhook = "REDACTED17"
+# round_update_webhook = "REDACTED17"
+# round_end_role = "1283176897219661856"
+# impstation new
+ahelp_webhook = "REDACTED19"
+vote_webhook = "REDACTED21"
+round_update_webhook = "REDACTED22"
+round_end_role = "1328099692134928489"
 
 # Prometheus for Grafana
 [metrics]
@@ -168,13 +173,8 @@ auto_record_temp_dir = "/tmp/replays"
 [config]
 presets = "Impstation/impstation"
 
-[looc]
-# people abused the privilege, so off it goes
-enabled_dead = false
-
 [server]
 id = "impstation"
 
-[tips]
-# this doesn't actually propagate to the client
-login_dataset = "LoginTips"
+[infolinks]
+discord = "https://discord.gg/TGNz3cEkag"
