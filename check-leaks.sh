@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eux
+set -eu
 
 source passwords.sh
 for i in ${!PASSWORDS[@]}; do
