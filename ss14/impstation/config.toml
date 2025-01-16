@@ -112,7 +112,6 @@ engine = "postgres"
 
 # PostgreSQL database configuration
 # Only relevant if engine is postgres
-# These are all default
 pg_host = "localhost"
 pg_port = 5432
 pg_database = "impstation"
@@ -120,14 +119,14 @@ pg_username = "impstation"
 pg_password = "REDACTED7"
 
 [discord]
-# hellzone
-# ahelp_webhook = "REDACTED16"
-# vote_webhook = "REDACTED17"
-# round_update_webhook = "REDACTED17"
-# round_end_role = "1283176897219661856"
 # impstation new
+# on_call_ping = ""
+# on_call_webhook = ""
 ahelp_webhook = "REDACTED19"
+# ahelp_footer_icon = ""
+# ahelp_avatar = ""
 vote_webhook = "REDACTED21"
+votekick_webhook = "REDACTED24"
 round_update_webhook = "REDACTED22"
 round_end_role = "1328099692134928489"
 
@@ -175,6 +174,3 @@ presets = "Impstation/impstation"
 
 [server]
 id = "impstation"
-
-[infolinks]
-discord = "https://discord.gg/TGNz3cEkag"

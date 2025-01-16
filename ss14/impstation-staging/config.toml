@@ -1,12 +1,16 @@
-# Welcome to the example configuration file!
-# Remember that if this is in bin/Content.Server or such, it may be overwritten on build.
-# Consider copying it and using the --config-file and --data-dir options.
+# important note:
+# most public stuff like server hostname, infolinks, motd etc. is set in:
+# https://github.com/impstation/imp-station-14/blob/master/Resources/ConfigPresets/Impstation/impstation.toml
+# see config.presets
 
 [log]
+# defaults
 path = "logs"
-format = "log_%(date)s-%(time)s.txt"
+format = "log_%(date)s-T%(time)s.txt"
+# note this changes the loglevel for the console, not just the file!
+# Log.LogLevel.Debug
 level = 1
-enabled = false
+enabled = true
 
 [net]
 tickrate = 30
@@ -20,7 +24,7 @@ max_connections = 256
 [status]
 # The status server is the TCP side, used by the launcher to determine engine version, etc.
 # To be clear: Disabling it makes the launcher unable to connect!
-enabled = true
+# enabled = true
 
 # This is the address and port the status server binds to.
 # The port is by default set based on net.port so it will follow what you set there.
@@ -31,22 +35,15 @@ enabled = true
 #  by default the launcher will assume the address and port match that of the status server.
 connectaddress = "udp://impstation.gay:16135"
 
-[game]
-hostname = "[EN] Imp Station [MRP]"
-soft_max_players = 80
-desc = "Unofficial server for fans of RTVS featuring custom content. Come and see him."
-# seconds
-# default 150
-lobbyduration = 300
-
-[ic]
-flavor_text = true
+privacy_policy_link = "http://impstation.gay/privacypolicy"
+privacy_policy_identifier = "impstation"
+privacy_policy_version = "2024-12-20"
 
 [console]
 # If this is true, people connecting from this machine (loopback)
 # will automatically be elevated to full admin privileges.
 # This literally works by checking if address == 127.0.0.1 || address == ::1
-loginlocal = true
+# loginlocal = true
 # login_host_user = ""
 
 [hub]
@@ -59,7 +56,7 @@ tags = "lang:en,rp:med,region:am_n_e"
 # URL of your server. Fill this in if you have a domain name,
 # want to use HTTPS (with a reverse proxy), or other advanced scenarios.
 # Must be in the form of an ss14:// or ss14s:// URI pointing to the status API.
-server_url = "ss14s://impstation.gay"
+server_url = "ss14s://impstation.gay:1312"
 # Comma-separated list of URLs of hub servers to advertise to.
 hub_urls = "https://hub.spacestation14.com/"
 
@@ -74,7 +71,7 @@ hub_urls = "https://hub.spacestation14.com/"
 # engine_version = "0.7.6"
 
 # This one is optional, the launcher will delete other ZIPs of the same fork to save space.
-# fork_id = "abacusstation"
+# fork_id = "impstation"
 
 # Automatically set if self-hosting client zip, but otherwise use this when updating client build.
 # There is no required format, any change counts as a new version.
@@ -115,7 +112,6 @@ engine = "postgres"
 
 # PostgreSQL database configuration
 # Only relevant if engine is postgres
-# These are all default
 pg_host = "localhost"
 pg_port = 5432
 pg_database = "impstation_staging"
@@ -123,25 +119,58 @@ pg_username = "impstation_staging"
 pg_password = "REDACTED8"
 
 [discord]
-ahelp_webhook = "REDACTED12"
-vote_webhook = "REDACTED13"
-round_update_webhook = "REDACTED14"
-round_end_role = "1260186538680258580"
-
-[infolinks]
-discord = "https://discord.gg/mirakurutaimu"
-github = "https://github.com/medabunny/imp-station-14"
-website = "https://impstation.gay"
+# hellzone
+# ahelp_webhook = "REDACTED16"
+# vote_webhook = "REDACTED17"
+# round_update_webhook = "REDACTED17"
+# round_end_role = "1283176897219661856"
+# impstation new
+# ahelp_webhook = "REDACTED19"
+# vote_webhook = "REDACTED21"
+# round_update_webhook = "REDACTED22"
+# round_end_role = "1328099692134928489"
 
 # Prometheus for Grafana
 [metrics]
-enabled = true
+enabled = false
 # defaults
 # host = "localhost"
 # port = 44880
 
 # Loki for Grafana
 [loki]
-enabled = true
+enabled = false
 address = "http://localhost:3100"
-name = "impstation-staging"
+name = "impstation"
+
+[replay]
+auto_record = false
+# the way these work is weird - the zip isn't really compressed
+# but each individual .dat file inside it is, and in a weird format.
+# you can tell the compression ratio based on the limit
+# for each uncompressed .dat in replay.replay_tick_batchSize,
+# which defaults to 1MB. the compression is about 5x
+# so when the zips cap out at ~200MB you can tell they're hitting
+# the default uncompressed limit of 1GB.
+# meanwhile the compressed limit of 500MB isn't ever a problem.
+# unit is kilobytes
+# default 500MB
+# max_compressed_size = 524288
+# default 1GB
+# max_uncompressed_size = 1048576
+# #2GB
+max_uncompressed_size = 2097152
+# this will be relative to the data directory,
+# even if you have a leading slash.
+# directory = "replays"
+directory = "www/replays"
+# this will be relative to replay.directory
+# but if it has a leading slash it will be relative
+# to the data directory
+auto_record_temp_dir = "/tmp/replays"
+
+[config]
+presets = "Impstation/impstation"
+
+[server]
+id = "impstation-staging"
