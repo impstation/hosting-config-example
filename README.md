@@ -15,6 +15,8 @@ The root directory has the following scripts:
 - `backup-sqlite.sh` - Old script to use sqlite3 to copy data into `backup/server`
 - `cdn-update.sh` - Build the game in `src/` and send it to Robust.Cdn with curl. Local alternative to "publish" GitHub action
 - `make-config-symlinks.sh` - Run once to link files in `/etc/ss14` to everywhere needed in `/opt` to allow easily versioning them with etckeeper. You need to create the files in `/etc/ss14` first.
+- `restore-postgres.sh` - Example of how to restore snapshot taken with `backup-postgres.sh`
+- `update-installs-dry-run.sh` - Check whether the manually installed dotnet software builds need installing.
 - `vacuum-replays.sh` - Delete files older than a certain age from the replays server
 - `watchdog-update` - Send an update ping instruction to the watchdog with curl
 
