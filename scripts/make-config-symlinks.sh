@@ -6,7 +6,6 @@ opt='/opt'
 
 cdn='Robust.Cdn'
 ln -s -f "$etc/$cdn/appsettings.json" "$opt/$cdn"
-ln -s -f "$etc/$cdn/appsettings.Development.json" "$opt/$cdn"
 
 admin='SS14.Admin'
 ln -s -f "$etc/$admin/appsettings.yml" "$opt/$admin"

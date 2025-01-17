@@ -2,8 +2,6 @@
 
 set -eux
 
-cp /root/README.md .
-
 rsync --archive --recursive /etc/ss14/ ss14
 
 mkdir -p scripts
