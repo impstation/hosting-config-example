@@ -20,6 +20,9 @@ The root directory has the following scripts:
 - `vacuum-replays.sh` - Delete files older than a certain age from the replays server
 - `watchdog-update` - Send an update ping instruction to the watchdog with curl
 
+### Offsite backups
+`backup-postgres.sh` will now copy snapshots into the home directory of the `backup_egress` user. I have a separate server which is set up with ssh access to that user only. It will run the scripts in `scripts/offsite` to periodically pull them out of there. Since this server can't access the offsite, only vice versa, if this server was accessed maliciously the backups would still be safe.
+
 The root directory contains the `src/` directory, which has the git source trees of all the ss14 software we're using. These are used to build the dotnet applications and then they're copied into `/opt` where we run them.
 
 Example:

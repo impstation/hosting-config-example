@@ -4,8 +4,7 @@ set -eux
 
 rsync --archive --recursive /etc/ss14/ ss14
 
-mkdir -p scripts
-cp -t scripts /root/scripts/*.sh
+rsync --archive --recursive /root/scripts/ scripts
 
 mkdir -p nginx
 cp -t nginx /etc/nginx/sites-available/ss14
