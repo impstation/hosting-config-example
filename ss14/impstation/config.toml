@@ -128,6 +128,7 @@ ahelp_webhook = "REDACTED19"
 vote_webhook = "REDACTED21"
 votekick_webhook = "REDACTED24"
 round_update_webhook = "REDACTED22"
+postround_chat_webhook = "REDACTED25"
 round_end_role = "1328099692134928489"
 
 # Prometheus for Grafana

@@ -12,7 +12,7 @@ set -eux
 # https://github.com/impstation/imp-station-14/blob/master/Tools/publish_github_artifact.py
 
 REPO_PATH="$HOME/src/imp-station-14"
-PUBLISH_TOKEN='REDACTED1'
+# PUBLISH_TOKEN=''
 
 # these are only used by the github artifact flow
 USE_MULTI_REQUEST=true

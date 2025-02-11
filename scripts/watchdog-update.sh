@@ -2,8 +2,10 @@
 
 set -eux
 
+# WATCHDOG_TOKEN=''
+
 curl \
     -v \
     -X 'POST' \
-    -u 'impstation:REDACTED0' \
+    -u "impstation:${WATCHDOG_TOKEN}" \
     'http://localhost:5000/instances/impstation/update'
