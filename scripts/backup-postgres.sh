@@ -16,11 +16,12 @@ chown "${egress_user}:${egress_user}" "${outbox}"
 pg_dump \
     --username='postgres' \
     --host='localhost' \
+    --verbose \
     --format='custom' \
-    --exclude-table-data 'admin_log' \
-    --exclude-table-data 'admin_log_player' \
-    'impstation' \
-    > "$snapshot"
+    --file="$snapshot" \
+    --exclude-table-data='admin_log' \
+    --exclude-table-data='admin_log_player' \
+    'impstation'
 
 ls -lh "$snapshot"
 

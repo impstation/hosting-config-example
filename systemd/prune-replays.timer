@@ -1,0 +1,10 @@
+[Unit]
+Description=Remove old server replays
+
+[Timer]
+Unit=prune-replays.service
+OnCalendar=*-*-* 00:00
+; OnUnitActiveSec=24h
+
+[Install]
+WantedBy=multi-user.target

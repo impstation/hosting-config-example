@@ -1,0 +1,6 @@
+[Unit]
+Description=Remove old server replays
+
+[Service]
+Type=oneshot
+ExecStart=/root/scripts/prune-replays.sh

@@ -27,6 +27,9 @@ AllowedHosts: "*"
 Notification:
   DiscordWebhook: "REDACTED20"
 
+Process:
+  PersistServers: true
+
 Servers:
   Instances:
     # ID of your server.
