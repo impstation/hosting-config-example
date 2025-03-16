@@ -10,7 +10,6 @@ This was written to keep the VPS organised and documented which is where you'll 
 The ssh keys for meda, ghoul, and I (imcb) are in `.ssh/authorized keys` to allow us to connect.
 
 The root directory has the following scripts:
-- `backup-config.sh` - (OLD - I realised you can just use symlinks) Copy appsettings.yml et cetera from various services into `/etc/ss14` to be staged by etckeeper
 - `backup-postgres.sh` - Use pg_dump to export data excluding logs into `backup/postgres`. Called by a systemd timer
 - `backup-sqlite.sh` - Old script to use sqlite3 to copy data into `backup/server`
 - `cdn-update.sh` - Build the game in `src/` and send it to Robust.Cdn with curl. Local alternative to "publish" GitHub action
