@@ -20,6 +20,9 @@ max_connections = 256
 # Automatic port forwarding!
 # Disabled by default because you may not want to do this.
 # upnp = true
+# default 131071
+sendbuffersize = 2097152
+# receivebuffersize = 131071
 
 [status]
 # The status server is the TCP side, used by the launcher to determine engine version, etc.
