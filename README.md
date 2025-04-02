@@ -82,8 +82,15 @@ We have the following tokens to think about:
 - client builds at `/var/robust-cdn/builds/`
 - server replays at `/opt/SS14.Watchdog/instances/impstation/data/www/replays`
 - database at `/var/lib/postgresql/16/main/`
+- backups at `/root/backup`
+- grafana stuff at `/var/lib/prometheus` and `/tmp/loki`
 
-you can view these with `du --human-readable --summarize /var/robust-cdn/builds/ /opt/SS14.Watchdog/instances/impstation/data/ /var/lib/postgresql/16/main/`
+you can view these with `du --human-readable --summarize /var/robust-cdn/builds/ /opt/SS14.Watchdog/instances/impstation/data/ /var/lib/postgresql/16/main/ /root/backup /var/lib/prometheus/ /tmp/loki`
+
+## Regular upkeep
+Server software should be updated with apt at a reasonable interval. For attended updates, you should wait for a round to end, then shutdown the game server, apply the updates, and reboot the VPS. Everything will then come back up on its own. Note, it's less confusing for players if you do this when there hasn't already been a watchdog restart from a publish.
+
+Admin logs in the database get huge and aren't needed permenantly, so unless we get a server with indefinite storage or upstream finally makes pruning automatic, they need to be cleared out. You can view info about this with `psql -U postgres --host localhost --dbname impstation --file /root/scripts/postgres-admin-log.sql`, backup the logs with high compression with `backup-postgres-admin-logs-all.sh` (WIP, may lag the server if done while only, will take a while), and then wipe them. The delete operation should be done while the server is down but should fairly quick. Postgres needs to vacuum or cluster to actually free up the space, I think this happens periodically but it can be done manually while the game server is down, need to look into it more
 
 ## Relevant docs
 ### SS14 wiki
